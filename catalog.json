@@ -1,0 +1,15 @@
+{
+  "name": "GitPulse Addons Catalog",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "id": "wow-l10n",
+      "name": "WoW Addon Translator",
+      "version": "1.0.0",
+      "description": "Scans WoW AddOn repositories (AceLocale-3.0 & JSON/ns.L), validates placeholders and color codes, supports optional AI suggestions with a WoW glossary, and opens 1-click GitHub PRs.",
+      "author": "gOOvER",
+      "manifestUrl": "https://raw.githubusercontent.com/gOOvER/GitPulse-Addons/main/addons/wow-l10n/manifest.json",
+      "repoUrl": "https://github.com/gOOvER/GitPulse-Addons/tree/main/addons/wow-l10n"
+    }
+  ]
+}

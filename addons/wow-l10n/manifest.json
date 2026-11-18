@@ -1,0 +1,48 @@
+{
+  "id": "wow-l10n",
+  "name": "WoW Addon Translator",
+  "version": "1.0.0",
+  "description": "Scans WoW AddOn repositories (AceLocale-3.0 & JSON/ns.L), validates placeholders and color codes, supports optional AI suggestions with a WoW glossary, and opens 1-click GitHub PRs.",
+  "author": "gOOvER",
+  "icon": "languages",
+  "runtime": "builtin",
+  "entry": "wow-l10n",
+  "repoUrl": "https://github.com/gOOvER/GitPulse-Addons/tree/main/addons/wow-l10n",
+  "defaultEnabled": true,
+  "requiredRole": "STAFF",
+  "settingsSchema": [
+    {
+      "key": "AI_PROVIDER",
+      "label": "Optional AI Engine",
+      "description": "Optional: AI provider for translation suggestions. Without an API key the editor works 100% manually.",
+      "type": "select",
+      "options": [
+        { "value": "none", "label": "Off (manual only)" },
+        { "value": "gemini", "label": "Google Gemini" },
+        { "value": "openai", "label": "OpenAI / Compatible (e.g. Ollama)" }
+      ]
+    },
+    {
+      "key": "AI_API_KEY",
+      "label": "AI API Key (optional)",
+      "description": "Stored encrypted in PostgreSQL.",
+      "type": "password",
+      "placeholder": "sk-... or AIza...",
+      "secret": true
+    },
+    {
+      "key": "AI_MODEL",
+      "label": "AI Model (optional)",
+      "description": "Leave empty for default model (gemini-2.5-flash / gpt-4o-mini).",
+      "type": "text",
+      "placeholder": "gemini-2.5-flash"
+    },
+    {
+      "key": "AI_BASE_URL",
+      "label": "OpenAI-Compatible Base URL (optional)",
+      "description": "Only needed for custom endpoints like Ollama (e.g. http://localhost:11434/v1).",
+      "type": "text",
+      "placeholder": "https://api.openai.com/v1"
+    }
+  ]
+}

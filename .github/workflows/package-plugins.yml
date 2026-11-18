@@ -1,0 +1,27 @@
+name: Package GitPulse Addons
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate & Zip each addon directory
+        run: |
+          mkdir -p dist
+          for dir in addons/*/; do
+            id=$(basename "$dir")
+            test -f "${dir}manifest.json"
+            ver=$(jq -r '.version' "${dir}manifest.json")
+            (cd addons && zip -r "../dist/${id}-v${ver}.zip" "$id")
+          done
+          ls -lh dist/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gitpulse-addons
+          path: dist/*.zip
